@@ -10,6 +10,6 @@ public interface Session {
     TransactionQueue process();
 
     default SessionManager getManager() {
-        
+        return null;
     }
 }
