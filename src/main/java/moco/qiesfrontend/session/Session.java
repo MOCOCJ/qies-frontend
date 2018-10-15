@@ -8,4 +8,8 @@ import moco.qiesfrontend.transaction.TransactionQueue;
 public interface Session {
 
     TransactionQueue process();
+
+    default SessionManager getManager() {
+        
+    }
 }
