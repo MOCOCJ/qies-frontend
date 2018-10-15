@@ -14,6 +14,7 @@ public class TransactionRecord {
     private ServiceNumber sourceNumber;
     private NumberTickets numberTickets;
     private ServiceNumber destinationNumber;
+    private ServiceName serviceName;
     private ServiceDate serviceDate;
 
     public TransactionRecord(TransactionCode code) {
@@ -29,6 +30,13 @@ public class TransactionRecord {
         sb.append(sourceNumber.toString());
         sb.append(' ');
         sb.append(numberTickets.toString());
+        sb.append(' ');
+        sb.append(destinationNumber.toString());
+        sb.append(' ');
+        sb.append(serviceName.toString());
+        sb.append(' ');
+        sb.append(serviceDate.toString());
+        sb.append(System.lineSeparator());
 
         return sb.toString();
     }
