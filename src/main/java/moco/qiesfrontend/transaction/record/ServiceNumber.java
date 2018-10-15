@@ -9,12 +9,18 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ServiceNumber {
-    //Vars
+    // Vars
     private String number;
     private final static String DEFULT = "00000";
 
     public ServiceNumber(String number) {
 
     }
-    
+
+    @Override
+    public String toString() {
+        return "";
+    }
+
+    Static isValid
 }

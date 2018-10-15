@@ -6,8 +6,8 @@ import lombok.Setter;
 /**
  * TransactionRecord
  */
- @Getter
- @Setter
+@Getter
+@Setter
 public class TransactionRecord {
 
     private TransactionCode code;
@@ -22,6 +22,14 @@ public class TransactionRecord {
 
     @Override
     public String toString() {
-        return null;
+        StringBuilder sb = new StringBuilder(69);
+
+        sb.append(code.toString());
+        sb.append(' ');
+        sb.append(sourceNumber.toString());
+        sb.append(' ');
+        sb.append(numberTickets.toString());
+
+        return sb.toString();
     }
 }

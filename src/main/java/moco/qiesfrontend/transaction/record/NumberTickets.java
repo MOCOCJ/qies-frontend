@@ -9,6 +9,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class NumberTickets {
+    // Vars
+    private int number;
+    private final static int DEFAULT = 0; // Current int is just a filler
 
-    
+    public NumberTickets() {
+        
+    }
+
 }

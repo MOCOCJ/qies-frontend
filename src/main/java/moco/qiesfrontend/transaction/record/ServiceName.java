@@ -5,5 +5,4 @@ package moco.qiesfrontend.transaction.record;
  */
 public class ServiceName {
 
-    
 }
