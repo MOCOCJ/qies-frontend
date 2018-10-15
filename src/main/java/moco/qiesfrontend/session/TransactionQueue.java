@@ -1,4 +1,4 @@
-package moco.qiesfrontend.transaction;
+package moco.qiesfrontend.session;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
