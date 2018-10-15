@@ -16,11 +16,15 @@ public class ServiceNumber {
     public ServiceNumber(String number) {
 
     }
+    
+    static boolean isValid(String value) {
+        return true;
+    }
 
     @Override
     public String toString() {
         return "";
     }
 
-    Static isValid
+
 }
