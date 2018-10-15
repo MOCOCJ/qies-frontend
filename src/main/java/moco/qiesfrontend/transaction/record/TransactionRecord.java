@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TransactionRecord {
-
+    // Vars
     private TransactionCode code;
     private ServiceNumber sourceNumber;
     private NumberTickets numberTickets;
@@ -40,4 +40,5 @@ public class TransactionRecord {
 
         return sb.toString();
     }
+    
 }
