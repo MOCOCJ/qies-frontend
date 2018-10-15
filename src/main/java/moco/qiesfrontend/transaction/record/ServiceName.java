@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ServiceName {
+public class ServiceName extends RecordElement{
     // Vars
     private String name;
     private final static int DEFAULT = 0; // Current int is just a filler

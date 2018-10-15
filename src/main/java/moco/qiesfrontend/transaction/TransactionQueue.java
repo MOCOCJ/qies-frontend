@@ -15,4 +15,8 @@ public class TransactionQueue {
     public TransactionQueue() {
         records = new ArrayDeque<>();
     }
+
+    public void add(TransactionRecord element) {
+        records.add(element);
+    }
 }

@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ServiceDate {
+public class ServiceDate extends RecordElement{
     // Vars
     private String year;
     private String month;

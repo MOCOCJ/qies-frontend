@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ServiceNumber {
+public class ServiceNumber extends RecordElement{
     // Vars
     private String number;
     private final static String DEFULT = "00000";
