@@ -2,7 +2,6 @@ package moco.qiesfrontend.session;
 
 import java.util.Map;
 
-import moco.qiesfrontend.transaction.TransactionQueue;
 import moco.qiesfrontend.transaction.record.ServiceNumber;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 

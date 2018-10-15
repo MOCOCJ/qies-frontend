@@ -1,7 +1,5 @@
 package moco.qiesfrontend.session;
 
-import moco.qiesfrontend.transaction.TransactionQueue;
-
 /**
  * ActiveSession
  */
