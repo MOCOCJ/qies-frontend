@@ -10,7 +10,7 @@ import java.io.File;
  */
 public class ValidServicesList {
 
-    private HashSet<ServiceNumber> validService;
+    private HashSet<ServiceNumber> validService = new HashSet<ServiceNumber>();
 
     public ValidServicesList(File validServicesFile) {
         String line;
