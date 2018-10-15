@@ -1,9 +1,9 @@
 package moco.qiesfrontend.transaction;
 
 /**
- * Transaction
+ * TransactionQueue
  */
-public abstract class Transaction {
+public class TransactionQueue {
 
     
 }
