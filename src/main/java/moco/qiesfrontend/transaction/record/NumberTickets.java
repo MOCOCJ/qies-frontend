@@ -14,7 +14,16 @@ public class NumberTickets {
     private final static int DEFAULT = 0; // Current int is just a filler
 
     public NumberTickets() {
-        
+
+    }
+
+    static boolean isValid(int value) {
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "";
     }
 
 }
