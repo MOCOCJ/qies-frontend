@@ -17,7 +17,7 @@ public class NumberTickets {
 
     }
 
-    static boolean isValid(int value) {
+    public static boolean isValid(int value) {
         return true;
     }
 

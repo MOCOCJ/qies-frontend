@@ -17,7 +17,7 @@ public class ServiceNumber {
 
     }
     
-    static boolean isValid(String value) {
+    public static boolean isValid(String value) {
         return true;
     }
 
