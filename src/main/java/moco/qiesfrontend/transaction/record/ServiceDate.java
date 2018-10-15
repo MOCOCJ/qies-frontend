@@ -1,6 +1,7 @@
 package moco.qiesfrontend.transaction.record;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -8,14 +9,15 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ServiceDate {
+@NoArgsConstructor
+public class ServiceDate extends RecordElement{
     // Vars
     private String year;
     private String month;
     private String day;
     private final static String DEFULT = "00000"; // May not be correct DEFULT value (was copied from ServiceNumber)
 
-    public ServiceDate() {
+    public ServiceDate(String data) {
 
     }
 
@@ -28,5 +30,4 @@ public class ServiceDate {
         return "";
     }
 
-    
 }

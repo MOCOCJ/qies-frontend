@@ -1,6 +1,7 @@
 package moco.qiesfrontend.transaction.record;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -8,7 +9,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ServiceNumber {
+@NoArgsConstructor
+public class ServiceNumber extends RecordElement{
     // Vars
     private String number;
     private final static String DEFULT = "00000";
@@ -25,6 +27,5 @@ public class ServiceNumber {
     public String toString() {
         return "";
     }
-
 
 }
