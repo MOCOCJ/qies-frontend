@@ -1,16 +1,22 @@
 package moco.qiesfrontend.transaction;
 
 import moco.qiesfrontend.transaction.record.TransactionCode;
+import moco.qiesfrontend.transaction.record.TransactionRecord;
 
 /**
  * Logout
  */
-public class Logout {
+public class Logout extends Transaction {
     // Vars
     public static TransactionCode CODE = TransactionCode.EOS;
 
     public Logout() {
 
     }
+
+    @Override
+    TransactionRecord makeTransaction() {
+        return null;
+	}
     
 }
