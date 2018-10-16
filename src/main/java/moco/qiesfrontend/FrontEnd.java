@@ -1,12 +1,26 @@
 package moco.qiesfrontend;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.logging.Level;
 
-@SpringBootApplication
+import lombok.extern.java.Log;
+import moco.qiesfrontend.session.SessionManager;
+
+@Log
 public class FrontEnd {
 
     public static void main(String[] args) {
-        SpringApplication.run(FrontEnd.class, args);
+        int exitCode = 0;
+
+        if (args.length != 2) {
+            log.log(Level.SEVERE, "Incorrect number of arguments " + args.length);
+            exitCode = 1;
+            System.exit(exitCode);
+        }
+
+        SessionManager sessionManager = new SessionManager(args[0], args[1]);
+        log.log(Level.INFO, "Something happened");
+        sessionManager.operate();
+
+        System.exit(exitCode);
     }
 }

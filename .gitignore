@@ -26,3 +26,9 @@
 
 # VSCode
 .vscode
+
+# Maven
+mvnw
+mvnw.cmd
+.mvn
+dependency-reduced-pom.xml
