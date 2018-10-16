@@ -11,11 +11,11 @@ public class SellTicket extends Transaction {
     public static TransactionCode CODE = TransactionCode.SEL;
 
     public SellTicket() {
-     
+        record = new TransactionRecord(CODE);
     }
 
     @Override
     public TransactionRecord makeTransaction() {
-        return null;
+        return record;
     }
 }

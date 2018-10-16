@@ -11,11 +11,11 @@ public class CreateService extends Transaction {
     public static TransactionCode CODE = TransactionCode.CRE;
 
     public CreateService() {
-     
+        record = new TransactionRecord(CODE);
     }
 
     @Override
     public TransactionRecord makeTransaction() {
-        return null;
+        return record;
     }
 }

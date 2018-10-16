@@ -11,11 +11,11 @@ public class CancelTicket extends Transaction {
     public static TransactionCode CODE = TransactionCode.CAN;
 
     public CancelTicket() {
-     
+        record = new TransactionRecord(CODE);
     }
 
     @Override
     public TransactionRecord makeTransaction() {
-        return null;
+        return record;
     }
 }

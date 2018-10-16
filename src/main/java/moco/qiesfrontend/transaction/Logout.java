@@ -11,11 +11,11 @@ public class Logout extends Transaction {
     public static TransactionCode CODE = TransactionCode.EOS;
 
     public Logout() {
-        this.record = new TransactionRecord(CODE);
+        record = new TransactionRecord(CODE);
     }
 
     @Override
     public TransactionRecord makeTransaction() {
-        return null;
+        return record;
     }
 }

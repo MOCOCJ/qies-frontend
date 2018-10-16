@@ -11,11 +11,11 @@ public class ChangeTicket extends Transaction {
     public static TransactionCode CODE = TransactionCode.CHG;
 
     public ChangeTicket() {
-     
+        record = new TransactionRecord(CODE);
     }
 
     @Override
     public TransactionRecord makeTransaction() {
-        return null;
+        return record;
     }
 }

@@ -11,11 +11,11 @@ public class DeleteService extends Transaction {
     public static TransactionCode CODE = TransactionCode.DEL;
 
     public DeleteService() {
-     
+        record = new TransactionRecord(CODE);
     }
 
     @Override
     public TransactionRecord makeTransaction() {
-        return null;
+        return record;
     }
 }
