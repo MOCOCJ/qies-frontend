@@ -16,7 +16,11 @@ public class TransactionQueue {
         records = new ArrayDeque<>();
     }
 
-    public void add(TransactionRecord element) {
+    public void push(TransactionRecord element) {
         records.add(element);
+    }
+
+    public TransactionRecord pop() {
+        return records.remove();
     }
 }

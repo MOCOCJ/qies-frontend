@@ -6,8 +6,8 @@ package moco.qiesfrontend.session;
 public class PlannerSession extends ActiveSession implements Session {
 
     @Override
-    public TransactionQueue process() {
-        return null;
+    public TransactionQueue process(SessionManager manager, TransactionQueue queue) {
+        return queue;
     }
 
     
