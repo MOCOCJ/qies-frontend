@@ -26,7 +26,7 @@ public class AgentSession extends ActiveSession implements Session {
     public TransactionQueue process(SessionManager manager, TransactionQueue queue) {
         Input input = manager.getInput();
         boolean run = true;
-        String userInput;
+        TransactionRecord record;
         String goodMessage = "Logged in as Agent. Enter command to begin a transaction.";
         String message = goodMessage;
         String command;
@@ -45,7 +45,8 @@ public class AgentSession extends ActiveSession implements Session {
 
                     break;
                 case "logout":
-
+                    record = logout();
+                    run = false;
                     break;
             }
         }

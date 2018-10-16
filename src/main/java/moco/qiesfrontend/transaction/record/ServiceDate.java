@@ -15,7 +15,7 @@ public class ServiceDate extends RecordElement {
     private String year;
     private String month;
     private String day;
-    private final static String DEFAULT = "00000"; // May not be correct DEFULT value (was copied from ServiceNumber)
+    private final static String DEFAULT = "0";
 
     public ServiceDate(String data) {
 

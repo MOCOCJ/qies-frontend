@@ -13,7 +13,7 @@ import lombok.Setter;
 public class ServiceName extends RecordElement {
     // Vars
     private String name;
-    private final static int DEFAULT = 0; // Current int is just a filler
+    private final static String DEFAULT = "****";
 
     public ServiceName(String name) {
 
@@ -28,7 +28,7 @@ public class ServiceName extends RecordElement {
         if (isSet) {
             return name;
         }
-        return Integer.toString(DEFAULT);
+        return DEFAULT;
     }
 
 }

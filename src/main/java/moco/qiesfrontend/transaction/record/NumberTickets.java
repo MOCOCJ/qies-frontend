@@ -13,7 +13,7 @@ import lombok.Setter;
 public class NumberTickets extends RecordElement {
     // Vars
     private int number;
-    private final static int DEFAULT = 0; // Current int is just a filler
+    private final static int DEFAULT = 0;
 
     public NumberTickets(int numbers) {
 
