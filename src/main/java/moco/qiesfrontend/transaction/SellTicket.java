@@ -15,8 +15,7 @@ public class SellTicket extends Transaction {
     }
 
     @Override
-    TransactionRecord makeTransaction() {
+    public TransactionRecord makeTransaction() {
         return null;
-	}
-    
+    }
 }

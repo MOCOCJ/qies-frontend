@@ -7,7 +7,7 @@ import moco.qiesfrontend.transaction.record.TransactionRecord;
  */
 public abstract class Transaction {
 
-    private TransactionRecord record;
+    protected TransactionRecord record;
 
-    abstract TransactionRecord makeTransaction();
+    public abstract TransactionRecord makeTransaction();
 }

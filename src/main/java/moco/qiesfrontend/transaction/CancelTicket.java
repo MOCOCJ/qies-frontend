@@ -15,8 +15,7 @@ public class CancelTicket extends Transaction {
     }
 
     @Override
-    TransactionRecord makeTransaction() {
+    public TransactionRecord makeTransaction() {
         return null;
-	}
-    
+    }
 }

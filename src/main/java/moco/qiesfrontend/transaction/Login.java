@@ -3,7 +3,7 @@ package moco.qiesfrontend.transaction;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
 /**
- * Login
+ * TODO: REMOVE
  */
 public class Login extends Transaction{
 
@@ -12,7 +12,7 @@ public class Login extends Transaction{
     }
 
     @Override
-    TransactionRecord makeTransaction() {
+    public TransactionRecord makeTransaction() {
         return null;
     }
 }
