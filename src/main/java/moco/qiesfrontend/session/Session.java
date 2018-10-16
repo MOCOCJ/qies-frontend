@@ -6,8 +6,4 @@ package moco.qiesfrontend.session;
 public interface Session {
 
     TransactionQueue process();
-
-    default SessionManager getManager() {
-        return null;
-    }
 }
