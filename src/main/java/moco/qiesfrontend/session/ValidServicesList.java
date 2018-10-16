@@ -17,17 +17,19 @@ public class ValidServicesList {
 
     public ValidServicesList(File validServicesFile) {
         validServices = new HashSet<ServiceNumber>();
+        readServices(validServicesFile);
+    }
 
+    public void readServices(File validServicesFile) {
         try (BufferedReader br = new BufferedReader(new FileReader(validServicesFile))) {
             String line;
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != "00000") {
                 validServices.add(new ServiceNumber(line));
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 
     public boolean isInList(ServiceNumber service) {

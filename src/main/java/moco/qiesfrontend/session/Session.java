@@ -5,5 +5,5 @@ package moco.qiesfrontend.session;
  */
 public interface Session {
 
-    TransactionQueue process();
+    TransactionQueue process(SessionManager manager, TransactionQueue queue);
 }

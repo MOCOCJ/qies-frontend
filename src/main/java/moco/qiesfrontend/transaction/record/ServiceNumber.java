@@ -28,4 +28,14 @@ public class ServiceNumber extends RecordElement{
         return "";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) 
+            return true;
+        if (!(o instanceof ServiceNumber))
+            return false;
+
+        ServiceNumber other = (ServiceNumber) o;
+        return other.getNumber().equals(this.number) && (other.isSet() == this.isSet());
+    }
 }

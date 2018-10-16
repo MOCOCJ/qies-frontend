@@ -5,7 +5,5 @@ package moco.qiesfrontend.session;
  */
 public abstract class ActiveSession implements Session {
 
-    private TransactionQueue records;
-
     
 }
