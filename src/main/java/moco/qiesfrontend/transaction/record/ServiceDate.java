@@ -10,12 +10,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ServiceDate extends RecordElement{
+public class ServiceDate extends RecordElement {
     // Vars
     private String year;
     private String month;
     private String day;
-    private final static String DEFULT = "00000"; // May not be correct DEFULT value (was copied from ServiceNumber)
+    private final static String DEFAULT = "00000"; // May not be correct DEFULT value (was copied from ServiceNumber)
 
     public ServiceDate(String data) {
 
