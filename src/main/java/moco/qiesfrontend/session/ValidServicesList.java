@@ -23,8 +23,9 @@ public class ValidServicesList {
     public void readServices(File validServicesFile) {
         try (BufferedReader br = new BufferedReader(new FileReader(validServicesFile))) {
             String line;
-            while ((line = br.readLine()) != "00000") {
-                validServices.add(new ServiceNumber(line));
+            while ((line = br.readLine()) != null) {
+                if (!line.equals("00000"))
+                    validServices.add(new ServiceNumber(line));
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
