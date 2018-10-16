@@ -5,10 +5,9 @@ import moco.qiesfrontend.transaction.record.TransactionRecord;
 /**
  * Transaction
  */
-public interface Transaction {
+public abstract class Transaction {
 
-    default TransactionRecord makeTransaction() {
-        System.out.println("[WARNING] This transaction is not yet implemented.");
-        return null;
-    }
+    private TransactionRecord record;
+
+    abstract TransactionRecord makeTransaction();
 }
