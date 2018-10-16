@@ -26,6 +26,6 @@ public class NoSession implements Session {
     }
 
     public boolean logIn(SessionManager manager) {
-
+        return false;
     }
 }
