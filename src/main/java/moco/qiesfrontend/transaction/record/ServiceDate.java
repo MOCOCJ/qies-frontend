@@ -27,7 +27,10 @@ public class ServiceDate extends RecordElement {
 
     @Override
     public String toString() {
-        return "";
+        if (isSet) {
+            return year + month + day;
+        }
+        return DEFAULT;
     }
 
 }

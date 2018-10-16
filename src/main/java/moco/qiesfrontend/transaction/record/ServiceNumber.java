@@ -26,17 +26,17 @@ public class ServiceNumber extends RecordElement {
 
     @Override
     public String toString() {
-        return "";
+        if (isSet) {
+            return number;
+        }
+        return DEFAULT;
     }
 
-/*     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof ServiceNumber))
-            return false;
-
-        ServiceNumber other = (ServiceNumber) o;
-        return other.getNumber().equals(this.number) && (other.isSet() == this.isSet());
-    } */
+    /*
+     * @Override public boolean equals(Object o) { if (o == this) return true; if
+     * (!(o instanceof ServiceNumber)) return false;
+     * 
+     * ServiceNumber other = (ServiceNumber) o; return
+     * other.getNumber().equals(this.number) && (other.isSet() == this.isSet()); }
+     */
 }

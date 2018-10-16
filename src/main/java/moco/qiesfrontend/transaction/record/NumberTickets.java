@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class NumberTickets extends RecordElement{
+public class NumberTickets extends RecordElement {
     // Vars
     private int number;
     private final static int DEFAULT = 0; // Current int is just a filler
@@ -25,7 +25,10 @@ public class NumberTickets extends RecordElement{
 
     @Override
     public String toString() {
-        return "";
+        if (isSet) {
+            return Integer.toString(number);
+        }
+        return Integer.toString(DEFAULT);
     }
 
 }
