@@ -16,16 +16,33 @@ public class NoSession implements Session {
             userInput = input.takeInput(message);
 
             if (userInput.equals("login")) {
-                run = false;
-                logIn(manager);
+                run = !logIn(manager);
             }
-            message = "Invalid input. " + message;
+            message = "Invalid input.";
         }
 
         return queue;
     }
 
     public boolean logIn(SessionManager manager) {
+        Input input = manager.getInput();
+        String message = "Login as agent or planner.";
+        boolean success = false;
+        String userType = input.takeInput(message);
 
+        switch (userType) {
+            case "agent":
+                manager.setSession(new AgentSession());
+                success = true;
+                break;
+            case "planner":
+                manager.setSession(new PlannerSession());
+                success = true;
+                break;
+            default:
+                break;
+        }
+
+        return success;
     }
 }
