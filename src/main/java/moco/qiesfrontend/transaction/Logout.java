@@ -6,7 +6,7 @@ import moco.qiesfrontend.transaction.record.TransactionRecord;
 /**
  * Logout
  */
-public class Logout extends Transaction {
+public class Logout {
     // Vars
     public static TransactionCode CODE = TransactionCode.EOS;
 
@@ -14,9 +14,4 @@ public class Logout extends Transaction {
 
     }
 
-    @Override
-    TransactionRecord makeTransaction() {
-        return null;
-	}
-    
 }
