@@ -16,7 +16,8 @@ public class ServiceNumber extends RecordElement {
     private final static String DEFAULT = "00000";
 
     public ServiceNumber(String number) {
-
+        this.number = number;
+        this.isSet = true;
     }
 
     public static boolean isValid(String value) {
@@ -28,7 +29,7 @@ public class ServiceNumber extends RecordElement {
         return "";
     }
 
-    @Override
+/*     @Override
     public boolean equals(Object o) {
         if (o == this)
             return true;
@@ -37,5 +38,5 @@ public class ServiceNumber extends RecordElement {
 
         ServiceNumber other = (ServiceNumber) o;
         return other.getNumber().equals(this.number) && (other.isSet() == this.isSet());
-    }
+    } */
 }

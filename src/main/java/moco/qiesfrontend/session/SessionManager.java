@@ -16,6 +16,7 @@ public class SessionManager {
     private ValidServicesList servicesList;
     private TransactionQueue transactionQueue;
     private File summaryFile;
+    private Input input;
 
     public SessionManager(String validServicesFilePath, String summaryFilePath) {
 
@@ -24,9 +25,29 @@ public class SessionManager {
         this.transactionQueue = new TransactionQueue();
         File validServicesFile = new File(validServicesFilePath);
         this.servicesList = new ValidServicesList(validServicesFile);
+        this.input = new Input("---");
     }
 
     public void operate() {
-        
+        session.process(this, transactionQueue);
+    }
+
+    public void setSession(Session session) {
+        if (session instanceof AgentSession) {
+            this.input.setPrompt("AGENT");
+        }
+        if (session instanceof PlannerSession) {
+            this.input.setPrompt("PLANNER");
+        }
+        if (session instanceof NoSession) {
+            printTransactionSummary();
+        }
+
+        this.session = session;
+        operate();
+    }
+
+    public void printTransactionSummary() {
+        //TODO
     }
 }
