@@ -5,7 +5,6 @@ import java.util.Map;
 
 import moco.qiesfrontend.transaction.CancelTicket;
 import moco.qiesfrontend.transaction.ChangeTicket;
-import moco.qiesfrontend.transaction.SellTicket;
 import moco.qiesfrontend.transaction.record.ServiceNumber;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
@@ -55,11 +54,6 @@ public class AgentSession extends ActiveSession implements Session {
         }
 
         manager.setSession(new NoSession());
-    }
-
-    public TransactionRecord sellTicket(Input input) {
-        SellTicket sellTicket = new SellTicket();
-        return sellTicket.makeTransaction(input);
     }
 
     public TransactionRecord changeTicket(Input input) {
