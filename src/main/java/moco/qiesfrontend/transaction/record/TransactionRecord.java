@@ -19,6 +19,11 @@ public class TransactionRecord {
 
     public TransactionRecord(TransactionCode code) {
         this.code = code;
+        this.sourceNumber = new ServiceNumber();
+        this.numberTickets = new NumberTickets();
+        this.destinationNumber = new ServiceNumber();
+        this.serviceName = new ServiceName();
+        this.serviceDate = new ServiceDate();
     }
 
     @Override

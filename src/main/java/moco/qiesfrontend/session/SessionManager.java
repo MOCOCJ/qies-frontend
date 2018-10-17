@@ -32,7 +32,7 @@ public class SessionManager {
         this.transactionQueue = new TransactionQueue();
         File validServicesFile = new File(validServicesFilePath);
         this.servicesList = new ValidServicesList(validServicesFile);
-        this.input = new Input("---");
+        this.input = new Input(" ----- ");
     }
 
     public void operate() {
@@ -41,12 +41,13 @@ public class SessionManager {
 
     public void setSession(Session session) {
         if (session instanceof AgentSession) {
-            this.input.setPrompt("AGENT");
+            this.input.setPrompt(" AGENT ");
         }
         if (session instanceof PlannerSession) {
             this.input.setPrompt("PLANNER");
         }
         if (session instanceof NoSession) {
+            this.input.setPrompt(" ----- ");
             printTransactionSummary();
         }
 
