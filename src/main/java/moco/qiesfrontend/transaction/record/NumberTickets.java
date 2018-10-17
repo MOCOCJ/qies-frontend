@@ -18,6 +18,7 @@ public class NumberTickets extends RecordElement {
     public NumberTickets(int numbers) {
         if (isValid(numbers)) {
             number = numbers;
+            isSet = true;
         } else {
             throw new IllegalArgumentException();
         }

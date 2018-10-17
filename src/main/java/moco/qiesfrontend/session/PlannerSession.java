@@ -50,22 +50,22 @@ public class PlannerSession extends ActiveSession implements Session {
 
     public TransactionRecord changeTicket(Input input) {
         ChangeTicket changeTicket = new ChangeTicket();
-        return changeTicket.makeTransaction(input).get();
+        return changeTicket.makeTransaction(input);
     }
 
     public TransactionRecord cancelTicket(Input input) {
         CancelTicket cancelTicket = new CancelTicket();
-        return cancelTicket.makeTransaction(input).get();
+        return cancelTicket.makeTransaction(input);
     }
 
     public TransactionRecord createService(Input input) {
         CreateService createService = new CreateService();
-        return createService.makeTransaction(input).get();
+        return createService.makeTransaction(input);
     }
 
     public TransactionRecord deleteService(Input input) {
         DeleteService deleteService = new DeleteService();
-        return deleteService.makeTransaction(input).get();
+        return deleteService.makeTransaction(input);
     }
 
 }

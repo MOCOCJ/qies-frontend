@@ -11,11 +11,11 @@ public abstract class ActiveSession implements Session {
 
     public TransactionRecord logout(Input input) {
         Logout logout = new Logout();
-        return logout.makeTransaction(input).get();
+        return logout.makeTransaction(input);
     }
 
     public TransactionRecord sellTicket(Input input) {
         SellTicket sellTicket = new SellTicket();
-        return sellTicket.makeTransaction(input).get();
+        return sellTicket.makeTransaction(input);
     }
 }

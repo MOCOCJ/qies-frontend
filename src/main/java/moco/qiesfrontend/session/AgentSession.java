@@ -59,16 +59,16 @@ public class AgentSession extends ActiveSession implements Session {
 
     public TransactionRecord sellTicket(Input input) {
         SellTicket sellTicket = new SellTicket();
-        return sellTicket.makeTransaction(input).get();
+        return sellTicket.makeTransaction(input);
     }
 
     public TransactionRecord changeTicket(Input input) {
         ChangeTicket changeTicket = new ChangeTicket();
-        return changeTicket.makeTransaction(input).get();
+        return changeTicket.makeTransaction(input);
     }
 
     public TransactionRecord cancelTicket(Input input) {
         CancelTicket cancelTicket = new CancelTicket();
-        return cancelTicket.makeTransaction(input).get();
+        return cancelTicket.makeTransaction(input);
     }
 }
