@@ -2,12 +2,9 @@ package moco.qiesfrontend.session;
 
 import java.util.Scanner;
 
-import lombok.extern.java.Log;
-
 /**
  * Prompt
  */
-@Log
 public class Input {
 
     private String prompt;
