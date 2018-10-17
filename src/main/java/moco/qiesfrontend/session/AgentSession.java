@@ -36,13 +36,13 @@ public class AgentSession extends ActiveSession implements Session {
 
             switch (command) {
                 case "sellticket":
-
+                    record = sellTicket();
                     break;
                 case "changeticket":
-
+                    record = changeTicket();
                     break;
                 case "cancelticket":
-
+                    record = cancelTicket();
                     break;
                 case "logout":
                     record = logout();
