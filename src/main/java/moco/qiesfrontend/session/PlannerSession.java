@@ -4,7 +4,6 @@ import moco.qiesfrontend.transaction.CancelTicket;
 import moco.qiesfrontend.transaction.ChangeTicket;
 import moco.qiesfrontend.transaction.CreateService;
 import moco.qiesfrontend.transaction.DeleteService;
-import moco.qiesfrontend.transaction.SellTicket;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
 /**
@@ -16,7 +15,7 @@ public class PlannerSession extends ActiveSession implements Session {
     public void process(SessionManager manager, TransactionQueue queue) {
         Input input = manager.getInput();
         boolean run = true;
-        TransactionRecord record;
+        TransactionRecord record = null;
         String goodMessage = "Logged in as Planner. Enter command to begin a transaction.";
         String message = goodMessage;
         String command;
@@ -45,7 +44,12 @@ public class PlannerSession extends ActiveSession implements Session {
                 run = false;
                 break;
             }
+
+            if (record != null)
+                queue.push(record);
         }
+
+        manager.setSession(new NoSession());
     }
 
     public TransactionRecord changeTicket(Input input) {
