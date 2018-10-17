@@ -1,5 +1,6 @@
 package moco.qiesfrontend.transaction.record;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@EqualsAndHashCode
 public class TransactionRecord {
     // Vars
     private TransactionCode code;
