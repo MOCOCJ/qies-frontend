@@ -26,7 +26,6 @@ public class NumberTickets extends RecordElement {
         }
     }
 
-    // Needs to be changed for next iteration so that it deals with agent/planner
     public static boolean isValid(int value) {
         if (value >= 1 && value <= 1000) {
             return true;
