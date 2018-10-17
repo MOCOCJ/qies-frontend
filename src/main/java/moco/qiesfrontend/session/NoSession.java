@@ -18,7 +18,7 @@ public class NoSession implements Session {
             if (userInput.equals("login")) {
                 run = !logIn(manager);
             }
-            message = "Invalid input.";
+            message = "Invalid input. You are not logged in, please log in before performing any other actions. (login)";
         }
     }
 

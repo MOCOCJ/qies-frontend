@@ -24,7 +24,7 @@ public class ServiceDate extends RecordElement {
             day = date.substring(6);
             isSet = true;
         } else {
-            // Throw exception
+            throw new IllegalArgumentException();
         }
     }
 
