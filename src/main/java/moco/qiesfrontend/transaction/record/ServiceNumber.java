@@ -20,7 +20,7 @@ public class ServiceNumber extends RecordElement {
             this.number = number;
             this.isSet = true;
         } else {
-            // Throw exception
+            throw new IllegalArgumentException();
         }
     }
 

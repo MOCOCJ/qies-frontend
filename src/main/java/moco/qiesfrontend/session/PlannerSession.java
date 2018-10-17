@@ -13,7 +13,7 @@ import moco.qiesfrontend.transaction.record.TransactionRecord;
 public class PlannerSession extends ActiveSession implements Session {
 
     @Override
-    public TransactionQueue process(SessionManager manager, TransactionQueue queue) {
+    public void process(SessionManager manager, TransactionQueue queue) {
         Input input = manager.getInput();
         boolean run = true;
         TransactionRecord record;
@@ -26,53 +26,46 @@ public class PlannerSession extends ActiveSession implements Session {
 
             switch (command) {
             case "sellticket":
-                record = sellTicket();
+                record = sellTicket(input);
                 break;
             case "changeticket":
-                record = changeTicket();
+                record = changeTicket(input);
                 break;
             case "cancelticket":
-                record = cancelTicket();
+                record = cancelTicket(input);
                 break;
             case "createservice":
-                record = createService();
+                record = createService(input);
                 break;
             case "deleteservice":
-                record = deleteService();
+                record = deleteService(input);
                 break;
             case "logout":
-                record = logout();
+                record = logout(input);
                 run = false;
                 break;
             }
         }
-
-        return queue;
     }
 
-    public TransactionRecord sellTicket() {
-        SellTicket sellTicket = new SellTicket();
-        return sellTicket.makeTransaction();
-    }
-
-    public TransactionRecord changeTicket() {
+    public TransactionRecord changeTicket(Input input) {
         ChangeTicket changeTicket = new ChangeTicket();
-        return changeTicket.makeTransaction();
+        return changeTicket.makeTransaction(input).get();
     }
 
-    public TransactionRecord cancelTicket() {
+    public TransactionRecord cancelTicket(Input input) {
         CancelTicket cancelTicket = new CancelTicket();
-        return cancelTicket.makeTransaction();
+        return cancelTicket.makeTransaction(input).get();
     }
 
-    public TransactionRecord createService() {
+    public TransactionRecord createService(Input input) {
         CreateService createService = new CreateService();
-        return createService.makeTransaction();
+        return createService.makeTransaction(input).get();
     }
 
-    public TransactionRecord deleteService() {
+    public TransactionRecord deleteService(Input input) {
         DeleteService deleteService = new DeleteService();
-        return deleteService.makeTransaction();
+        return deleteService.makeTransaction(input).get();
     }
 
 }

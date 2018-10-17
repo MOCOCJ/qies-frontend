@@ -23,7 +23,7 @@ public class AgentSession extends ActiveSession implements Session {
     }
 
     @Override
-    public TransactionQueue process(SessionManager manager, TransactionQueue queue) {
+    public void process(SessionManager manager, TransactionQueue queue) {
         Input input = manager.getInput();
         boolean run = true;
         TransactionRecord record = null;
@@ -36,16 +36,16 @@ public class AgentSession extends ActiveSession implements Session {
 
             switch (command) {
                 case "sellticket":
-                    record = sellTicket();
+                    record = sellTicket(input);
                     break;
                 case "changeticket":
-                    record = changeTicket();
+                    record = changeTicket(input);
                     break;
                 case "cancelticket":
-                    record = cancelTicket();
+                    record = cancelTicket(input);
                     break;
                 case "logout":
-                    record = logout();
+                    record = logout(input);
                     run = false;
                     break;
             }
@@ -55,21 +55,20 @@ public class AgentSession extends ActiveSession implements Session {
         }
 
         manager.setSession(new NoSession());
-        return queue;
     }
 
-    public TransactionRecord sellTicket() {
+    public TransactionRecord sellTicket(Input input) {
         SellTicket sellTicket = new SellTicket();
-        return sellTicket.makeTransaction();
+        return sellTicket.makeTransaction(input).get();
     }
 
-    public TransactionRecord changeTicket() {
+    public TransactionRecord changeTicket(Input input) {
         ChangeTicket changeTicket = new ChangeTicket();
-        return changeTicket.makeTransaction();
+        return changeTicket.makeTransaction(input).get();
     }
 
-    public TransactionRecord cancelTicket() {
+    public TransactionRecord cancelTicket(Input input) {
         CancelTicket cancelTicket = new CancelTicket();
-        return cancelTicket.makeTransaction();
+        return cancelTicket.makeTransaction(input).get();
     }
 }

@@ -1,5 +1,8 @@
 package moco.qiesfrontend.transaction;
 
+import java.util.Optional;
+
+import moco.qiesfrontend.session.Input;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
 /**
@@ -9,5 +12,5 @@ public abstract class Transaction {
 
     protected TransactionRecord record;
 
-    public abstract TransactionRecord makeTransaction();
+    public abstract Optional<TransactionRecord> makeTransaction(Input input);
 }

@@ -19,7 +19,7 @@ public class NumberTickets extends RecordElement {
         if (isValid(numbers)) {
             number = numbers;
         } else {
-            // Throw exception
+            throw new IllegalArgumentException();
         }
     }
 

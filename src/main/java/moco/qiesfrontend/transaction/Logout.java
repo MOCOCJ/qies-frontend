@@ -1,5 +1,8 @@
 package moco.qiesfrontend.transaction;
 
+import java.util.Optional;
+
+import moco.qiesfrontend.session.Input;
 import moco.qiesfrontend.transaction.record.TransactionCode;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
@@ -15,7 +18,8 @@ public class Logout extends Transaction {
     }
 
     @Override
-    public TransactionRecord makeTransaction() {
-        return record;
+    public Optional<TransactionRecord> makeTransaction(Input input) {
+        Optional<TransactionRecord> optionalRecord = Optional.of(record);
+        return optionalRecord;
     }
 }
