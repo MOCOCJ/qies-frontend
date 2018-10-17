@@ -17,11 +17,11 @@ public class ServiceDate extends RecordElement {
     private String day;
     private final static String DEFAULT = "0";
 
-    public ServiceDate(String data) {
-        if (isValid(data)) {
-            year = data.substring(0, 4);
-            month = data.substring(4, 6);
-            day = data.substring(6);
+    public ServiceDate(String date) {
+        if (isValid(date)) {
+            year = date.substring(0, 4);
+            month = date.substring(4, 6);
+            day = date.substring(6);
         } else {
             // Throw exception
         }
