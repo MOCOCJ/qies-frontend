@@ -23,4 +23,8 @@ public class TransactionQueue {
     public TransactionRecord pop() {
         return records.remove();
     }
+
+    public boolean isEmpty() {
+        return records.isEmpty();
+    }
 }

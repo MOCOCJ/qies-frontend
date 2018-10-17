@@ -1,6 +1,13 @@
 package moco.qiesfrontend.session;
 
+import static java.nio.file.StandardOpenOption.APPEND;
+import static java.nio.file.StandardOpenOption.CREATE;
+import static java.nio.file.StandardOpenOption.WRITE;
+
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -48,6 +55,17 @@ public class SessionManager {
     }
 
     public void printTransactionSummary() {
-        //TODO
+        Path summaryPath = summaryFile.toPath();
+        byte[] recordBytes;
+        try {
+            while (!transactionQueue.isEmpty()) {
+                recordBytes = transactionQueue.pop().toString().getBytes();
+
+                Files.write(summaryPath, recordBytes, CREATE, WRITE, APPEND);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
