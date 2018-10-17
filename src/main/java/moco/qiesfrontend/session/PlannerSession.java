@@ -17,7 +17,7 @@ public class PlannerSession extends ActiveSession implements Session {
         Input input = manager.getInput();
         boolean run = true;
         TransactionRecord record;
-        String goodMessage = "Logged in as Agent. Enter command to begin a transaction.";
+        String goodMessage = "Logged in as Planner. Enter command to begin a transaction.";
         String message = goodMessage;
         String command;
 
