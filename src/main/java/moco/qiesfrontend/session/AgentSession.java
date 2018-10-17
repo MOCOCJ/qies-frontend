@@ -34,19 +34,25 @@ public class AgentSession extends ActiveSession implements Session {
             command = input.takeInput(message);
 
             switch (command) {
-                case "sellticket":
-                    record = sellTicket(input);
-                    break;
-                case "changeticket":
-                    record = changeTicket(input);
-                    break;
-                case "cancelticket":
-                    record = cancelTicket(input);
-                    break;
-                case "logout":
-                    record = logout(input);
-                    run = false;
-                    break;
+            case "sellticket":
+                record = sellTicket(input);
+                message = goodMessage;
+                break;
+            case "changeticket":
+                record = changeTicket(input);
+                message = goodMessage;
+                break;
+            case "cancelticket":
+                record = cancelTicket(input);
+                message = goodMessage;
+                break;
+            case "logout":
+                record = logout(input);
+                run = false;
+                break;
+            default:
+                message = "Invalid input. Logged in as Agent. Enter command to begin a transaction.";
+                break;
             }
 
             if (record != null)

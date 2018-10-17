@@ -1,6 +1,6 @@
 package moco.qiesfrontend.session;
 
-
+import lombok.Builder.Default;
 import moco.qiesfrontend.transaction.CancelTicket;
 import moco.qiesfrontend.transaction.ChangeTicket;
 import moco.qiesfrontend.transaction.CreateService;
@@ -12,7 +12,7 @@ import moco.qiesfrontend.transaction.record.TransactionRecord;
  * PlannerSession
  */
 public class PlannerSession extends ActiveSession implements Session {
-    
+
     @Override
     public void process(SessionManager manager, TransactionQueue queue) {
         Input input = manager.getInput();
@@ -28,22 +28,30 @@ public class PlannerSession extends ActiveSession implements Session {
             switch (command) {
             case "sellticket":
                 record = sellTicket(input);
+                message = goodMessage;
                 break;
             case "changeticket":
                 record = changeTicket(input);
+                message = goodMessage;
                 break;
             case "cancelticket":
                 record = cancelTicket(input);
+                message = goodMessage;
                 break;
             case "createservice":
                 record = createService(input);
+                message = goodMessage;
                 break;
             case "deleteservice":
                 record = deleteService(input);
+                message = goodMessage;
                 break;
             case "logout":
                 record = logout(input);
                 run = false;
+                break;
+            default:
+                message = "Invalid input. Logged in as Planner. Enter command to begin a transaction.";
                 break;
             }
 
