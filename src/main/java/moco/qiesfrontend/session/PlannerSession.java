@@ -1,9 +1,11 @@
 package moco.qiesfrontend.session;
 
+
 import moco.qiesfrontend.transaction.CancelTicket;
 import moco.qiesfrontend.transaction.ChangeTicket;
 import moco.qiesfrontend.transaction.CreateService;
 import moco.qiesfrontend.transaction.DeleteService;
+
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
 /**
@@ -11,7 +13,32 @@ import moco.qiesfrontend.transaction.record.TransactionRecord;
  */
 public class PlannerSession extends ActiveSession implements Session {
 
+    public PlannerSession() {
+
+    }
+
+    public TransactionRecord createService() {
+
+        return null;
+    }
+
+    public TransactionRecord deleteService() {
+
+        return null;
+    }
+
+    public TransactionRecord changeTicket() {
+
+        return null;
+    }
+
+    public TransactionRecord cancelTicket() {
+
+        return null;
+    }
+
     @Override
+
     public void process(SessionManager manager, TransactionQueue queue) {
         Input input = manager.getInput();
         boolean run = true;
