@@ -20,6 +20,7 @@ public class ServiceName extends RecordElement {
     public ServiceName(String name) {
         if (isValid(name)) {
             this.name = name;
+            isSet = true;
         } else {
             // Throw exception
         }

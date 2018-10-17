@@ -22,6 +22,7 @@ public class ServiceDate extends RecordElement {
             year = date.substring(0, 4);
             month = date.substring(4, 6);
             day = date.substring(6);
+            isSet = true;
         } else {
             // Throw exception
         }
