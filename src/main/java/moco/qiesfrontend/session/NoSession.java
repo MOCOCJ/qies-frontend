@@ -6,7 +6,7 @@ package moco.qiesfrontend.session;
 public class NoSession implements Session {
 
     @Override
-    public TransactionQueue process(SessionManager manager, TransactionQueue queue) {
+    public void process(SessionManager manager, TransactionQueue queue) {
         Input input = manager.getInput();
         boolean run = true;
         String message = "You are not logged in, please log in before performing any other actions. (login)";
@@ -20,8 +20,6 @@ public class NoSession implements Session {
             }
             message = "Invalid input.";
         }
-
-        return queue;
     }
 
     public boolean logIn(SessionManager manager) {

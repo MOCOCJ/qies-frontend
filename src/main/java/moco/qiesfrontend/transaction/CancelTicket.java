@@ -1,5 +1,6 @@
 package moco.qiesfrontend.transaction;
 
+import moco.qiesfrontend.session.Input;
 import moco.qiesfrontend.transaction.record.TransactionCode;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
@@ -15,7 +16,7 @@ public class CancelTicket extends Transaction {
     }
 
     @Override
-    public TransactionRecord makeTransaction() {
+    public TransactionRecord makeTransaction(Input input) {
         return record;
     }
 }

@@ -18,7 +18,6 @@ public class FrontEnd {
         }
 
         SessionManager sessionManager = new SessionManager(args[0], args[1]);
-        log.log(Level.INFO, "Something happened");
         sessionManager.operate();
 
         System.exit(exitCode);

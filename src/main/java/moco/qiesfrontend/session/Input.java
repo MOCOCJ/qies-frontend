@@ -1,7 +1,6 @@
 package moco.qiesfrontend.session;
 
 import java.util.Scanner;
-import java.util.logging.Level;
 
 import lombok.extern.java.Log;
 
@@ -28,7 +27,6 @@ public class Input {
         System.out.print(prompt);
 
         String in = inputReader.nextLine();
-        //log.log(Level.INFO, in);
 
         return in;
     }

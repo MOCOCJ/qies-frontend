@@ -9,13 +9,13 @@ import moco.qiesfrontend.transaction.record.TransactionRecord;
  */
 public abstract class ActiveSession implements Session {
 
-    public TransactionRecord logout() { //TODO: Full functionality
+    public TransactionRecord logout(Input input) {
         Logout logout = new Logout();
-        return logout.makeTransaction();
+        return logout.makeTransaction(input);
     }
 
-    public TransactionRecord sellTicket() {
+    public TransactionRecord sellTicket(Input input) {
         SellTicket sellTicket = new SellTicket();
-        return sellTicket.makeTransaction();
+        return sellTicket.makeTransaction(input);
     }
 }

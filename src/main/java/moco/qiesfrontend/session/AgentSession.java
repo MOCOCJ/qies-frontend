@@ -5,7 +5,6 @@ import java.util.Map;
 
 import moco.qiesfrontend.transaction.CancelTicket;
 import moco.qiesfrontend.transaction.ChangeTicket;
-import moco.qiesfrontend.transaction.SellTicket;
 import moco.qiesfrontend.transaction.record.ServiceNumber;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
@@ -23,10 +22,10 @@ public class AgentSession extends ActiveSession implements Session {
     }
 
     @Override
-    public TransactionQueue process(SessionManager manager, TransactionQueue queue) {
+    public void process(SessionManager manager, TransactionQueue queue) {
         Input input = manager.getInput();
         boolean run = true;
-        TransactionRecord record;
+        TransactionRecord record = null;
         String goodMessage = "Logged in as Agent. Enter command to begin a transaction.";
         String message = goodMessage;
         String command;
@@ -36,36 +35,34 @@ public class AgentSession extends ActiveSession implements Session {
 
             switch (command) {
                 case "sellticket":
-
+                    record = sellTicket(input);
                     break;
                 case "changeticket":
-
+                    record = changeTicket(input);
                     break;
                 case "cancelticket":
-
+                    record = cancelTicket(input);
                     break;
                 case "logout":
-                    record = logout();
+                    record = logout(input);
                     run = false;
                     break;
             }
+
+            if (record != null)
+                queue.push(record);
         }
 
-        return queue;
+        manager.setSession(new NoSession());
     }
 
-    public TransactionRecord sellTicket() {
-        SellTicket sellTicket = new SellTicket();
-        return sellTicket.makeTransaction();
-    }
-
-    public TransactionRecord changeTicket() {
+    public TransactionRecord changeTicket(Input input) {
         ChangeTicket changeTicket = new ChangeTicket();
-        return changeTicket.makeTransaction();
+        return changeTicket.makeTransaction(input);
     }
 
-    public TransactionRecord cancelTicket() {
+    public TransactionRecord cancelTicket(Input input) {
         CancelTicket cancelTicket = new CancelTicket();
-        return cancelTicket.makeTransaction();
+        return cancelTicket.makeTransaction(input);
     }
 }

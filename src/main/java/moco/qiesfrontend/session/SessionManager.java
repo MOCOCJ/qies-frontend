@@ -1,6 +1,13 @@
 package moco.qiesfrontend.session;
 
+import static java.nio.file.StandardOpenOption.APPEND;
+import static java.nio.file.StandardOpenOption.CREATE;
+import static java.nio.file.StandardOpenOption.WRITE;
+
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +32,7 @@ public class SessionManager {
         this.transactionQueue = new TransactionQueue();
         File validServicesFile = new File(validServicesFilePath);
         this.servicesList = new ValidServicesList(validServicesFile);
-        this.input = new Input("---");
+        this.input = new Input(" ----- ");
     }
 
     public void operate() {
@@ -34,12 +41,13 @@ public class SessionManager {
 
     public void setSession(Session session) {
         if (session instanceof AgentSession) {
-            this.input.setPrompt("AGENT");
+            this.input.setPrompt(" AGENT ");
         }
         if (session instanceof PlannerSession) {
             this.input.setPrompt("PLANNER");
         }
         if (session instanceof NoSession) {
+            this.input.setPrompt(" ----- ");
             printTransactionSummary();
         }
 
@@ -48,6 +56,17 @@ public class SessionManager {
     }
 
     public void printTransactionSummary() {
-        //TODO
+        Path summaryPath = summaryFile.toPath();
+        byte[] recordBytes;
+        try {
+            while (!transactionQueue.isEmpty()) {
+                recordBytes = transactionQueue.pop().toString().getBytes();
+
+                Files.write(summaryPath, recordBytes, CREATE, WRITE, APPEND);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
