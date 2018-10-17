@@ -16,11 +16,18 @@ public class NumberTickets extends RecordElement {
     private final static int DEFAULT = 0;
 
     public NumberTickets(int numbers) {
-
+        if (isValid(numbers)) {
+            number = numbers;
+        } else {
+            // Throw exception
+        }
     }
 
     public static boolean isValid(int value) {
-        return true;
+        if (value >= 1 && value <= 1000) {
+            return true;
+        }
+        return false;
     }
 
     @Override

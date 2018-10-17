@@ -16,12 +16,21 @@ public class ServiceNumber extends RecordElement {
     private final static String DEFAULT = "00000";
 
     public ServiceNumber(String number) {
-        this.number = number;
-        this.isSet = true;
+        if (isValid(number)) {
+            this.number = number;
+            this.isSet = true;
+        } else {
+            // Throw exception
+        }
     }
 
     public static boolean isValid(String value) {
-        return true;
+        if (value.length() == 5) {
+            if (value.charAt(0) != '0') {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
