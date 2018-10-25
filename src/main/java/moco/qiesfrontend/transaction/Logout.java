@@ -1,6 +1,7 @@
 package moco.qiesfrontend.transaction;
 
 import moco.qiesfrontend.session.Input;
+import moco.qiesfrontend.session.SessionManager;
 import moco.qiesfrontend.transaction.record.TransactionCode;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
@@ -19,4 +20,15 @@ public class Logout extends Transaction {
     public TransactionRecord makeTransaction(Input input) {
         return record;
     }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input, SessionManager manager) {
+        return null;
+    }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input, SessionManager manager, int ticketCount) {
+        return null;
+    }
+
 }

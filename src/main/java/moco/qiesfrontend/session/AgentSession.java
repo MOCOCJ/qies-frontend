@@ -3,8 +3,6 @@ package moco.qiesfrontend.session;
 import java.util.HashMap;
 import java.util.Map;
 
-import moco.qiesfrontend.transaction.CancelTicket;
-import moco.qiesfrontend.transaction.ChangeTicket;
 import moco.qiesfrontend.transaction.record.ServiceNumber;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
@@ -13,8 +11,8 @@ import moco.qiesfrontend.transaction.record.TransactionRecord;
  */
 public class AgentSession extends ActiveSession implements Session {
 
-    private int changedTickets;
-    private int totalCancelledTickets;
+    private int changedTickets = 0;
+    private int totalCancelledTickets = 0;
     private Map<ServiceNumber, Integer> cancelledTickets;
 
     public AgentSession() {
@@ -35,15 +33,21 @@ public class AgentSession extends ActiveSession implements Session {
 
             switch (command) {
             case "sellticket":
-                record = sellTicket(input);
+                record = sellTicket(input, manager);
                 message = goodMessage;
                 break;
             case "changeticket":
-                record = changeTicket(input);
+                record = changeTicket(input, manager, changedTickets);
+                if (record != null) {
+                    changedTickets += record.getNumberTickets().getNumber();
+                }
                 message = goodMessage;
                 break;
             case "cancelticket":
-                record = cancelTicket(input);
+                record = cancelTicket(input, manager, totalCancelledTickets);
+                if (record != null) {
+                    totalCancelledTickets += record.getNumberTickets().getNumber();
+                }
                 message = goodMessage;
                 break;
             case "logout":
@@ -59,16 +63,7 @@ public class AgentSession extends ActiveSession implements Session {
                 queue.push(record);
         }
 
-        manager.setSession(new NoSession());
+        manager.setSession(new NoSession()); // This is also a stoping of flow and may need to be fixed
     }
 
-    public TransactionRecord changeTicket(Input input) {
-        ChangeTicket changeTicket = new ChangeTicket();
-        return changeTicket.makeTransaction(input);
-    }
-
-    public TransactionRecord cancelTicket(Input input) {
-        CancelTicket cancelTicket = new CancelTicket();
-        return cancelTicket.makeTransaction(input);
-    }
 }

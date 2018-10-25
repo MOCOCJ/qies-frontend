@@ -11,6 +11,7 @@ import java.nio.file.Path;
 
 import lombok.Getter;
 import lombok.Setter;
+import moco.qiesfrontend.transaction.record.ServiceNumber;
 
 /**
  * SessionManager
@@ -67,6 +68,14 @@ public class SessionManager {
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }
+    }
+
+    public boolean isInValidServices(ServiceNumber service) {
+        if (servicesList.isInList(service.getNumber())) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

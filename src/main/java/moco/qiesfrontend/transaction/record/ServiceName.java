@@ -36,7 +36,6 @@ public class ServiceName extends RecordElement {
                         return false;
                     }
                 }
-
                 return true;
             }
         }

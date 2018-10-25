@@ -1,6 +1,7 @@
 package moco.qiesfrontend.transaction;
 
 import moco.qiesfrontend.session.Input;
+import moco.qiesfrontend.session.SessionManager;
 import moco.qiesfrontend.transaction.record.ServiceDate;
 import moco.qiesfrontend.transaction.record.ServiceName;
 import moco.qiesfrontend.transaction.record.ServiceNumber;
@@ -19,7 +20,7 @@ public class CreateService extends Transaction {
     }
 
     @Override
-    public TransactionRecord makeTransaction(Input input) {
+    public TransactionRecord makeTransaction(Input input, SessionManager manager) {
         String serviceNumberIn;
         String serviceDateIn;
         String serviceNameIn;
@@ -30,6 +31,9 @@ public class CreateService extends Transaction {
         serviceNumberIn = input.takeInput("Enter service number of the service you wish to create.");
         try {
             serviceNumber = new ServiceNumber(serviceNumberIn);
+            if (manager.isInValidServices(serviceNumber)) {
+                throw new IllegalArgumentException();
+            }
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid service number.");
             return null;
@@ -57,4 +61,15 @@ public class CreateService extends Transaction {
 
         return record;
     }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input) {
+        return null;
+    }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input, SessionManager manager, int ticketCount) {
+        return null;
+    }
+
 }

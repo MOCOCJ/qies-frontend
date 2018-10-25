@@ -22,6 +22,8 @@ public class NoSession implements Session {
         }
     }
 
+    // There is a problem here. We never return the flow back to NoSession ager the
+    // .setSession command. Check this
     public boolean logIn(SessionManager manager) {
         Input input = manager.getInput();
         String message = "Login as agent or planner.";
@@ -29,16 +31,16 @@ public class NoSession implements Session {
         String userType = input.takeInput(message);
 
         switch (userType) {
-            case "agent":
-                manager.setSession(new AgentSession());
-                success = true;
-                break;
-            case "planner":
-                manager.setSession(new PlannerSession());
-                success = true;
-                break;
-            default:
-                break;
+        case "agent":
+            manager.setSession(new AgentSession());
+            success = true;
+            break;
+        case "planner":
+            manager.setSession(new PlannerSession());
+            success = true;
+            break;
+        default:
+            break;
         }
 
         return success;

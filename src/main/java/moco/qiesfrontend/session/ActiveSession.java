@@ -1,5 +1,9 @@
 package moco.qiesfrontend.session;
 
+import moco.qiesfrontend.transaction.CancelTicket;
+import moco.qiesfrontend.transaction.ChangeTicket;
+import moco.qiesfrontend.transaction.CreateService;
+import moco.qiesfrontend.transaction.DeleteService;
 import moco.qiesfrontend.transaction.Logout;
 import moco.qiesfrontend.transaction.SellTicket;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
@@ -14,8 +18,43 @@ public abstract class ActiveSession implements Session {
         return logout.makeTransaction(input);
     }
 
-    public TransactionRecord sellTicket(Input input) {
+    public TransactionRecord sellTicket(Input input, SessionManager manager) {
         SellTicket sellTicket = new SellTicket();
-        return sellTicket.makeTransaction(input);
+        return sellTicket.makeTransaction(input, manager);
     }
+
+    // This cancelTicket funtion is for the Planner
+    public TransactionRecord cancelTicket(Input input, SessionManager manager) {
+        CancelTicket cancelTicket = new CancelTicket();
+        return cancelTicket.makeTransaction(input, manager);
+    }
+
+    // This cancelTicket funtion is for the Agent (ticketCount for tracking prev canceled tickets)
+    public TransactionRecord cancelTicket(Input input, SessionManager manager, int ticketCount) {
+        CancelTicket cancelTicket = new CancelTicket();
+        return cancelTicket.makeTransaction(input, manager, ticketCount);
+    }
+
+    // This changeTicket funtion is for the Planner
+    public TransactionRecord changeTicket(Input input, SessionManager manager) {
+        ChangeTicket changeTicket = new ChangeTicket();
+        return changeTicket.makeTransaction(input, manager);
+    }
+
+    // This changeTicket funtion is for the Agent (ticketCount for tracking prev changed tickets)
+    public TransactionRecord changeTicket(Input input, SessionManager manager, int ticketCount) {
+        ChangeTicket changeTicket = new ChangeTicket();
+        return changeTicket.makeTransaction(input, manager, ticketCount);
+    }
+
+    public TransactionRecord createService(Input input, SessionManager manager) {
+        CreateService createService = new CreateService();
+        return createService.makeTransaction(input, manager);
+    }
+
+    public TransactionRecord deleteService(Input input, SessionManager manager) {
+        DeleteService deleteService = new DeleteService();
+        return deleteService.makeTransaction(input, manager);
+    }
+
 }

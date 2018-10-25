@@ -13,10 +13,10 @@ import java.io.IOException;
  */
 public class ValidServicesList {
 
-    private Set<ServiceNumber> validServices;
+    private Set<String> validServices;
 
     public ValidServicesList(File validServicesFile) {
-        validServices = new HashSet<ServiceNumber>();
+        validServices = new HashSet<String>();
         readServices(validServicesFile);
     }
 
@@ -25,7 +25,7 @@ public class ValidServicesList {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.equals("00000"))
-                    validServices.add(new ServiceNumber(line));
+                    validServices.add(line);
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -33,7 +33,7 @@ public class ValidServicesList {
         }
     }
 
-    public boolean isInList(ServiceNumber service) {
+    public boolean isInList(String service) {
         if (validServices.contains(service)) {
             return true;
         }

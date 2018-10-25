@@ -1,6 +1,7 @@
 package moco.qiesfrontend.transaction;
 
 import moco.qiesfrontend.session.Input;
+import moco.qiesfrontend.session.SessionManager;
 import moco.qiesfrontend.transaction.record.NumberTickets;
 import moco.qiesfrontend.transaction.record.ServiceNumber;
 import moco.qiesfrontend.transaction.record.TransactionCode;
@@ -18,21 +19,21 @@ public class SellTicket extends Transaction {
     }
 
     @Override
-    public TransactionRecord makeTransaction(Input input) {
+    public TransactionRecord makeTransaction(Input input, SessionManager manager) {
         String serviceNumberIn;
-        int numTicketsIn;
+        String numTicketsIn;
         ServiceNumber serviceNumber;
         NumberTickets numberTickets;
 
         serviceNumberIn = input.takeInput("Enter service number to sell tickets for.");
         try {
-            serviceNumber = new ServiceNumber(serviceNumberIn);
+            serviceNumber = new ServiceNumber(serviceNumberIn, manager);
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid service number.");
             return null;
         }
 
-        numTicketsIn = Integer.parseInt(input.takeInput("Enter number of tickets to sell."));
+        numTicketsIn = input.takeInput("Enter number of tickets to sell.");
         try {
             numberTickets = new NumberTickets(numTicketsIn);
         } catch (IllegalArgumentException e) {
@@ -44,5 +45,15 @@ public class SellTicket extends Transaction {
         record.setNumberTickets(numberTickets);
 
         return record;
+    }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input) {
+        return null;
+    }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input, SessionManager manager, int ticketCount) {
+        return null;
     }
 }

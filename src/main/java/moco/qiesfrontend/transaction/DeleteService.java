@@ -1,6 +1,7 @@
 package moco.qiesfrontend.transaction;
 
 import moco.qiesfrontend.session.Input;
+import moco.qiesfrontend.session.SessionManager;
 import moco.qiesfrontend.transaction.record.ServiceName;
 import moco.qiesfrontend.transaction.record.ServiceNumber;
 import moco.qiesfrontend.transaction.record.TransactionCode;
@@ -18,7 +19,7 @@ public class DeleteService extends Transaction {
     }
 
     @Override
-    public TransactionRecord makeTransaction(Input input) {
+    public TransactionRecord makeTransaction(Input input, SessionManager manager) {
         String serviceNumberIn;
         String serviceNameIn;
         ServiceNumber serviceNumber;
@@ -43,5 +44,17 @@ public class DeleteService extends Transaction {
         record.setSourceNumber(serviceNumber);
         record.setServiceName(serviceName);
 
-        return record;    }
+        return record;
+    }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input) {
+        return null;
+    }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input, SessionManager manager, int ticketCount) {
+        return null;
+    }
+
 }
