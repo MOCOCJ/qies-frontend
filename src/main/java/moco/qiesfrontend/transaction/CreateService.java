@@ -48,7 +48,6 @@ public class CreateService extends Transaction {
         }
 
         serviceNameIn = input.takeInput("Enter service name of the service you wish to create.");
-        System.out.println(serviceNameIn);
         try {
             serviceName = new ServiceName(serviceNameIn);
         } catch (IllegalArgumentException e) {
