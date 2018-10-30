@@ -1,6 +1,5 @@
 package moco.qiesfrontend.transaction;
 
-import moco.qiesfrontend.session.AgentSession;
 import moco.qiesfrontend.session.Input;
 import moco.qiesfrontend.session.SessionManager;
 import moco.qiesfrontend.transaction.record.NumberTickets;
@@ -42,14 +41,15 @@ public class CancelTicket extends Transaction {
                 throw new IllegalArgumentException();
             } else if (numberTickets.getNumber() + ticketCount > 20) {
                 System.out.format(
-                        "Cannot cancel as total session canceled tickets would be over 20.\nUser has %d tickets left to cancel this session.", 20 - ticketCount);
+                        "Cannot cancel as total session canceled tickets would be over 20.\nUser has %d tickets left to cancel this session.",
+                        20 - ticketCount);
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
             System.out.print("\nInvalid number of tickets. ");
             return null;
         }
-
+        System.out.format("%s ticket(s) canceled from service %s\n", numTicketsIn, serviceNumber);
         record.setSourceNumber(serviceNumber);
         record.setNumberTickets(numberTickets);
 
@@ -79,6 +79,7 @@ public class CancelTicket extends Transaction {
             return null;
         }
 
+        System.out.format("%s ticket(s) canceled from service %s.\n", numTicketsIn, serviceNumber);
         record.setSourceNumber(serviceNumber);
         record.setNumberTickets(numberTickets);
 

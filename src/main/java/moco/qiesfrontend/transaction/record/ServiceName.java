@@ -1,6 +1,5 @@
 package moco.qiesfrontend.transaction.record;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +9,6 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@EqualsAndHashCode
 @NoArgsConstructor
 public class ServiceName extends RecordElement {
     // Vars

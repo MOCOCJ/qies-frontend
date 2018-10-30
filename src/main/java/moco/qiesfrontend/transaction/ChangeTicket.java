@@ -1,6 +1,5 @@
 package moco.qiesfrontend.transaction;
 
-import moco.qiesfrontend.session.AgentSession;
 import moco.qiesfrontend.session.Input;
 import moco.qiesfrontend.session.SessionManager;
 import moco.qiesfrontend.transaction.record.NumberTickets;
@@ -49,14 +48,16 @@ public class ChangeTicket extends Transaction {
             numberTickets = new NumberTickets(numTicketsIn);
             if (ticketCount + numberTickets.getNumber() > 20) {
                 System.out.format(
-                        "Cannot change as total session changed tickets would be over 20.\nUser has %d tickets left to change this session.", 20 - ticketCount);
+                        "Cannot change as total session changed tickets would be over 20.\nUser has %d tickets left to change this session.",
+                        20 - ticketCount);
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
             System.out.print("\nInvalid number of tickets.");
             return null;
         }
-
+        System.out.format("%s ticket(s) changed from service %s to service %s\n", numTicketsIn, sourceNumberIn,
+                destinationNumberIn);
         record.setSourceNumber(sourceNumber);
         record.setDestinationNumber(destinationNumber);
         record.setNumberTickets(numberTickets);
@@ -97,6 +98,8 @@ public class ChangeTicket extends Transaction {
             return null;
         }
 
+        System.out.format("%s ticket(s) changed from service %s to service %s\n", numTicketsIn, sourceNumberIn,
+                destinationNumberIn);
         record.setSourceNumber(sourceNumber);
         record.setDestinationNumber(destinationNumber);
         record.setNumberTickets(numberTickets);

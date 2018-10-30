@@ -1,6 +1,5 @@
 package moco.qiesfrontend.session;
 
-import moco.qiesfrontend.transaction.record.ServiceNumber;
 import java.util.HashSet;
 import java.util.Set;
 import java.io.BufferedReader;

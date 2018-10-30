@@ -1,6 +1,5 @@
 package moco.qiesfrontend.transaction.record;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -58,7 +57,7 @@ public class ServiceDate extends RecordElement {
     @Override
     public String toString() {
         if (isSet) {
-            return year + month + day;
+            return year + "/" + month + "/" + day;
         }
         return DEFAULT;
     }

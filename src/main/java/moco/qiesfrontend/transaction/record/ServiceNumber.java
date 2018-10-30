@@ -40,7 +40,6 @@ public class ServiceNumber extends RecordElement {
 
     // Checks is the ServiceName is contained in the valid_services_list.txt
     public static boolean isContained(String value, SessionManager manager) {
-        ServiceNumber tempService = new ServiceNumber(value);
         if (isValid(value)) {
             if (manager.getServicesList().isInList(value)) {
                 return true;

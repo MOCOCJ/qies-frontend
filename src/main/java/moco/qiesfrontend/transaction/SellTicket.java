@@ -41,6 +41,7 @@ public class SellTicket extends Transaction {
             return null;
         }
 
+        System.out.format("%s ticket(s) sold for service %s\n", numTicketsIn, serviceNumberIn);
         record.setSourceNumber(serviceNumber);
         record.setNumberTickets(numberTickets);
 
