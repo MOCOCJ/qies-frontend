@@ -13,10 +13,10 @@ public class AgentSession extends ActiveSession implements Session {
 
     private int changedTickets = 0;
     private int totalCancelledTickets = 0;
-    private Map<ServiceNumber, Integer> cancelledTickets;
+    private Map<String, Integer> cancelledTickets;
 
     public AgentSession() {
-        cancelledTickets = new HashMap<ServiceNumber, Integer>();
+        cancelledTickets = new HashMap<String, Integer>();
     }
 
     @Override
@@ -44,8 +44,14 @@ public class AgentSession extends ActiveSession implements Session {
                 message = goodMessage;
                 break;
             case "cancelticket":
-                record = cancelTicket(input, manager, totalCancelledTickets);
-                if (record != null) {
+                record = cancelTicket(input, manager, totalCancelledTickets, cancelledTickets);
+                if (record != null) {                    
+                    if (cancelledTickets.containsKey(record.getSourceNumber().getNumber())) {
+                        int temp = cancelledTickets.get(record.getSourceNumber().getNumber());
+                        cancelledTickets.replace(record.getSourceNumber().getNumber(), temp, temp + record.getNumberTickets().getNumber());
+                    } else {
+                        cancelledTickets.put(record.getSourceNumber().getNumber(), record.getNumberTickets().getNumber());
+                    }
                     totalCancelledTickets += record.getNumberTickets().getNumber();
                 }
                 message = goodMessage;

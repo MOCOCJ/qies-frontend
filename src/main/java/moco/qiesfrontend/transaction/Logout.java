@@ -1,7 +1,10 @@
 package moco.qiesfrontend.transaction;
 
+import java.util.Map;
+
 import moco.qiesfrontend.session.Input;
 import moco.qiesfrontend.session.SessionManager;
+import moco.qiesfrontend.transaction.record.ServiceNumber;
 import moco.qiesfrontend.transaction.record.TransactionCode;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
@@ -28,6 +31,12 @@ public class Logout extends Transaction {
 
     @Override
     public TransactionRecord makeTransaction(Input input, SessionManager manager, int ticketCount) {
+        return null;
+    }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input, SessionManager manager, int ticketCount,
+            Map<String, Integer> canceledTickets) {
         return null;
     }
 

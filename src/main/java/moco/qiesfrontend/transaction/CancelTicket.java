@@ -1,5 +1,8 @@
 package moco.qiesfrontend.transaction;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import moco.qiesfrontend.session.Input;
 import moco.qiesfrontend.session.SessionManager;
 import moco.qiesfrontend.transaction.record.NumberTickets;
@@ -19,7 +22,8 @@ public class CancelTicket extends Transaction {
     }
 
     @Override
-    public TransactionRecord makeTransaction(Input input, SessionManager manager, int ticketCount) {
+    public TransactionRecord makeTransaction(Input input, SessionManager manager, int ticketCount,
+            Map<String, Integer> canceledTickets) {
         String serviceNumberIn;
         String numTicketsIn;
         ServiceNumber serviceNumber;
@@ -38,6 +42,12 @@ public class CancelTicket extends Transaction {
             numberTickets = new NumberTickets(numTicketsIn);
             if (numberTickets.getNumber() > 10) {
                 System.out.print("Cannot cancel more then 10 tickets at once.");
+                throw new IllegalArgumentException();
+            } else if (canceledTickets.containsKey(serviceNumber.getNumber())
+                    && numberTickets.getNumber() + canceledTickets.get(serviceNumber.getNumber()) > 10) {
+                System.out.format(
+                        "Cannot cancel more then 10 tickets for a single service.\nUser has %d tickets left to cancel for this service.",
+                        10 - canceledTickets.get(serviceNumber.getNumber()));
                 throw new IllegalArgumentException();
             } else if (numberTickets.getNumber() + ticketCount > 20) {
                 System.out.format(
@@ -88,6 +98,11 @@ public class CancelTicket extends Transaction {
 
     @Override
     public TransactionRecord makeTransaction(Input input) {
+        return null;
+    }
+
+    @Override
+    public TransactionRecord makeTransaction(Input input, SessionManager manager, int ticketCount) {
         return null;
     }
 
