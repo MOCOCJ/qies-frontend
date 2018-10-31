@@ -1,6 +1,5 @@
 package moco.qiesfrontend.transaction;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import moco.qiesfrontend.session.Input;
