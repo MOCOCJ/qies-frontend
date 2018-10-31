@@ -3,7 +3,6 @@ package moco.qiesfrontend.session;
 import java.util.HashMap;
 import java.util.Map;
 
-import moco.qiesfrontend.transaction.record.ServiceNumber;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
 /**

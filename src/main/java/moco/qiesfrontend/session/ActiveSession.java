@@ -8,7 +8,6 @@ import moco.qiesfrontend.transaction.CreateService;
 import moco.qiesfrontend.transaction.DeleteService;
 import moco.qiesfrontend.transaction.Logout;
 import moco.qiesfrontend.transaction.SellTicket;
-import moco.qiesfrontend.transaction.record.ServiceNumber;
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
 /**
