@@ -1,3 +1,9 @@
 #!/bin/bash
+executable="./target/frontend.jar"
 
-java -jar ./target/frontend.jar $1 $2
+if [ ! -f "$executable" ]
+then
+  ./mvnw -B clean package
+fi
+
+java -jar $executable "$1" "$2"
