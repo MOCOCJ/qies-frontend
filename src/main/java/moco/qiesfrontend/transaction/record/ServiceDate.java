@@ -16,6 +16,8 @@ public class ServiceDate extends RecordElement {
     private String month;
     private String day;
     private final static String DEFAULT = "0";
+    private final static String NUMBERS = "0123456789";
+
 
     public ServiceDate(String date) {
         if (isValid(date)) {
@@ -30,6 +32,12 @@ public class ServiceDate extends RecordElement {
 
     public static boolean isValid(String value) {
         if (value.length() == 8) {
+            for (int i = 0; i < value.length(); i++) {
+                if (!NUMBERS.contains("" + value.charAt(i))) {
+                    return false;
+                }
+            }
+            
             int y = Integer.parseInt(value.substring(0, 4));
             int m = Integer.parseInt(value.substring(4, 6));
             int d = Integer.parseInt(value.substring(6));

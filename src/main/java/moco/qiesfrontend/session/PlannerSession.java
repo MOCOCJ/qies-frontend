@@ -1,11 +1,5 @@
 package moco.qiesfrontend.session;
 
-
-import moco.qiesfrontend.transaction.CancelTicket;
-import moco.qiesfrontend.transaction.ChangeTicket;
-import moco.qiesfrontend.transaction.CreateService;
-import moco.qiesfrontend.transaction.DeleteService;
-
 import moco.qiesfrontend.transaction.record.TransactionRecord;
 
 /**
@@ -13,32 +7,7 @@ import moco.qiesfrontend.transaction.record.TransactionRecord;
  */
 public class PlannerSession extends ActiveSession implements Session {
 
-    public PlannerSession() {
-
-    }
-
-    public TransactionRecord createService() {
-
-        return null;
-    }
-
-    public TransactionRecord deleteService() {
-
-        return null;
-    }
-
-    public TransactionRecord changeTicket() {
-
-        return null;
-    }
-
-    public TransactionRecord cancelTicket() {
-
-        return null;
-    }
-
     @Override
-
     public void process(SessionManager manager, TransactionQueue queue) {
         Input input = manager.getInput();
         boolean run = true;
@@ -52,23 +21,31 @@ public class PlannerSession extends ActiveSession implements Session {
 
             switch (command) {
             case "sellticket":
-                record = sellTicket(input);
+                record = sellTicket(input, manager);
+                message = goodMessage;
                 break;
             case "changeticket":
-                record = changeTicket(input);
+                record = changeTicket(input, manager);
+                message = goodMessage;
                 break;
             case "cancelticket":
-                record = cancelTicket(input);
+                record = cancelTicket(input, manager);
+                message = goodMessage;
                 break;
             case "createservice":
-                record = createService(input);
+                record = createService(input, manager);
+                message = goodMessage;
                 break;
             case "deleteservice":
-                record = deleteService(input);
+                record = deleteService(input, manager);
+                message = goodMessage;
                 break;
             case "logout":
                 record = logout(input);
                 run = false;
+                break;
+            default:
+                message = "Invalid input. Logged in as Planner. Enter command to begin a transaction.";
                 break;
             }
 
@@ -77,26 +54,6 @@ public class PlannerSession extends ActiveSession implements Session {
         }
 
         manager.setSession(new NoSession());
-    }
-
-    public TransactionRecord changeTicket(Input input) {
-        ChangeTicket changeTicket = new ChangeTicket();
-        return changeTicket.makeTransaction(input);
-    }
-
-    public TransactionRecord cancelTicket(Input input) {
-        CancelTicket cancelTicket = new CancelTicket();
-        return cancelTicket.makeTransaction(input);
-    }
-
-    public TransactionRecord createService(Input input) {
-        CreateService createService = new CreateService();
-        return createService.makeTransaction(input);
-    }
-
-    public TransactionRecord deleteService(Input input) {
-        DeleteService deleteService = new DeleteService();
-        return deleteService.makeTransaction(input);
     }
 
 }
