@@ -29,7 +29,7 @@ public class DeleteService extends Transaction {
 
         serviceNumberIn = input.takeInput("Enter service number of the service you wish to delete.");
         try {
-            serviceNumber = new ServiceNumber(serviceNumberIn);
+            serviceNumber = new ServiceNumber(serviceNumberIn, manager);
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid service number.");
             return null;
