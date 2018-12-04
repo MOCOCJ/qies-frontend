@@ -46,6 +46,7 @@ public class DeleteService extends Transaction {
         System.out.format("Service %s with service name %s was deleted\n", serviceNumberIn, serviceNameIn);
         record.setSourceNumber(serviceNumber);
         record.setServiceName(serviceName);
+        manager.getServicesList().deleteService(serviceNumber.toString());
 
         return record;
     }

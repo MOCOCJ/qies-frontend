@@ -39,4 +39,7 @@ public class ValidServicesList {
         return false;
     }
 
+    public void deleteService(String service) {
+        validServices.remove(service);
+    }
 }
